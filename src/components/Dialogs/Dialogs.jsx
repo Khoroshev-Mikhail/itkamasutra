@@ -23,6 +23,7 @@ let dialogsData = [
     {id: 3, name: 'Мама'},
     {id: 4, name: 'Лена'},
 ]
+let dialogs = dialogsData.map(el => <DialogsItem name={el.name} id={el.id}/>)
 
 let messagesData = [
     {id: 1, message: 'Перове сообщение'},
@@ -30,21 +31,16 @@ let messagesData = [
     {id: 3, message: 'Третье сообщение'},
     {id: 4, message: 'Четвёртое сообщение'},
 ]
-
+let messages = messagesData.map(el => <Message message={el.message}/>)
 
 const Dialogs = () => {
     return (
         <div className={css.dialogs}>
             <div>
-                <DialogsItem name={dialogsData[0].name} id={dialogsData[0].id}/>
-                <DialogsItem name={dialogsData[1].name} id={dialogsData[1].id}/>
-                <DialogsItem name={dialogsData[2].name} id={dialogsData[2].id}/>
+                {dialogs}
             </div>
             <div>
-                <Message message={messagesData[0].message}/>
-                <Message message={messagesData[1].message}/>
-                <Message message={messagesData[2].message}/>
-                <Message message={messagesData[3].message}/>
+                {messages}
             </div>
         </div>
     );
