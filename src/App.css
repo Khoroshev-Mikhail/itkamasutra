@@ -28,10 +28,6 @@
   grid-template-rows: 60px 1fr;
   grid-template-columns: 2fr 10fr;
 }
-.header {
-  grid-area: h;
-  background-color: brown;
-}
 .nav{
   grid-area: n;
   background-color: chartreuse;
