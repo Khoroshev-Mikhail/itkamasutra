@@ -3,7 +3,7 @@ import MyPosts from './MyPosts/MyPosts.jsx';
 
 const Content = () => {
     return (
-        <div className={css.content}>
+        <div>
             <div>
             header
             </div>
