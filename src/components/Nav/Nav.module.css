@@ -1,8 +1,13 @@
 .nav{
   grid-area: n;
   background-color: chartreuse;
+  padding: 20px 20px;
 }
 
-.active {
+.nav a {
+  text-decoration: none;
+}
+
+.nav a.active{
   color:white;
 }

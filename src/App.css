@@ -35,4 +35,5 @@
 .content{
   grid-area: c;
   background-color: plum;
+  padding: 20px;
 }
