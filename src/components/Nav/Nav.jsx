@@ -4,10 +4,10 @@ const Nav = () => {
     return (
         <nav className={css.nav}>
             <div>
-            <a href="" className={css.active}>Profile</a>
+            <a href="/Content" className={css.active}>Profile</a>
             </div>
             <div>
-            <a href="">Messages</a>
+            <a href="/Dialogs">Messages</a>
             </div>
             <div>
             <a href="">News</a>
