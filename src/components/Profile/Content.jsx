@@ -2,11 +2,11 @@ import css from './Content.module.css';
 import MyPosts from './MyPosts/MyPosts.jsx';
 import ProfileInfo from './ProfileInfo/ProfileInfo.jsx';
 
-const Content = () => {
+const Content = (props) => {
     return (
         <div>
             <ProfileInfo />
-            <MyPosts />
+            <MyPosts postData = {props.postData} />
         </div>
     );
 }

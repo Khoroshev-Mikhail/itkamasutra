@@ -7,13 +7,17 @@ import Messages from './Messages/Messages.jsx';
 
 
 const Dialogs = (props) => {
+
+    let dialogs = props.dialogsData.map(el => <DialogsItem name={el.name} id={el.id}/>);
+    let messages = props.messagesData.map(el => <Messages message={el.message}/>);
+
     return (
         <div className={css.dialogs}>
             <div>
-                {props.dialogsData.map(el => <DialogsItem name={el.name} id={el.id}/>)}
+                {dialogs}
             </div>
             <div>
-                {props.messagesData.map(el => <Messages message={el.message}/>)}
+                {messages}
             </div>
         </div>
     );

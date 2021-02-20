@@ -14,8 +14,13 @@ function App(props) {
         <Header />
         <Nav />
         <div className="content">
-          <Route path="/Content" render={() => <Content />} />
-          <Route path="/Dialogs" render={() => <Dialogs dialogsData={props.dialogsData} messagesData={props.messagesData}/>} />
+          <Route path="/Content" 
+            render={() => <Content 
+              postData={props.state.posts.postData} />} />
+          <Route path="/Dialogs" 
+            render={() => <Dialogs 
+              dialogsData={props.state.messages.dialogsData} 
+              messagesData={props.state.messages.messagesData} />} />
         </div>
       </div>
     </BrowserRouter>

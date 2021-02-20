@@ -1,15 +1,12 @@
 import css from './MyPosts.module.css';
 import Post from './Post/Post.jsx';
 
-let postData = [
-    {id: 1, message: 'Hi, how are you?', likes: 15},
-    {id: 2, message: 'I am fine!', likes: 122},
-    {id: 3, message: 'we are fine too', likes: 222},
-]
-let posts = postData.map(el => <Post message={el.message} likeCount={el.likes} />)
 
 
 const MyPosts = (props) => {
+
+    let postData = props.postData.map(el => <Post message={el.message} likeCount={el.likes} />);
+    
     return (
             <div className={css.my_posts}>
             my posts
@@ -18,7 +15,7 @@ const MyPosts = (props) => {
                 <button>Add Post</button>
                 </div>
                 <div className={css.posts}>
-                    {posts}
+                    {postData}
                 </div>
             </div>
     );
