@@ -6,15 +6,16 @@ import Dialogs from './components/Dialogs/Dialogs.jsx';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 
-function App() {
+
+function App(props) {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
         <Header />
         <Nav />
         <div className="content">
-          <Route path="/Content" component={Content} />
-          <Route exact path="/Dialogs" component={Dialogs} />
+          <Route path="/Content" render={() => <Content />} />
+          <Route path="/Dialogs" render={() => <Dialogs dialogsData={props.dialogsData} messagesData={props.messagesData}/>} />
         </div>
       </div>
     </BrowserRouter>
