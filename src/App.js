@@ -12,7 +12,7 @@ function App(props) {
     <BrowserRouter>
       <div className="app-wrapper">
         <Header />
-        <Nav />
+        <Nav friendBar = {props.state.friends.friendsData}/>
         <div className="content">
           <Route path="/Content" 
             render={() => <Content 

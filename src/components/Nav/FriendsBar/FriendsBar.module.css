@@ -1,0 +1,17 @@
+.friendsBar{
+  padding-top: 50px;
+}
+.friendsava img {
+  width: 40px;
+  background-color: aqua;
+  border-radius: 20px;
+}
+.friendsBar_line{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.friendsava p{
+  text-align: center;
+}

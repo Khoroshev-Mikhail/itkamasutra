@@ -1,7 +1,8 @@
 import { NavLink } from 'react-router-dom';
 import css from './Nav.module.css';
+import FriendsBar from './FriendsBar/FriendsBar';
 
-const Nav = () => {
+const Nav = (props) => {
     return (
         <nav className={css.nav}>
             <div>
@@ -19,6 +20,9 @@ const Nav = () => {
             <div>
                 <a href="">Settings</a>
             </div>
+
+            <FriendsBar friendsBar = {props.friendBar} />
+
         </nav>
     );
 }
