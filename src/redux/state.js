@@ -1,3 +1,5 @@
+import { reRenderEntireTree } from "../render";
+
   let state = {
         posts : {
             postData : [
@@ -22,11 +24,18 @@
         },
         friends : {
             friendsData : [
-                {name: 'Счастье', id: 1},
-                {name: 'Любовь', id:2},
+                {name: 'Фрол', id: 1},
+                {name: 'Мама', id:2},
                 {name: 'Таня', id:3},
             ]
         }
+    }
+
+    export let addPost = (postMessage) => {
+        let id = state.posts.postData.length + 1;
+        let newPost = {id: id, message: postMessage, likes: 0}
+        state.posts.postData.push(newPost);
+        reRenderEntireTree(state);
     }
 
     export default state;
