@@ -7,6 +7,7 @@ import { reRenderEntireTree } from "../render";
             {id: 2, message: 'I am fine!', likes: 122},
             {id: 3, message: 'we are fine too', likes: 222},
             ],
+            newPostText : 'it-kamasutra.com',
         },
         messages : {
             dialogsData : [
@@ -31,12 +32,20 @@ import { reRenderEntireTree } from "../render";
         }
     }
 
-    export let addPost = (postMessage) => {
+    export let addPost = () => {
         let id = state.posts.postData.length + 1;
-        let newPost = {id: id, message: postMessage, likes: 0}
+        let newPost = {id: id, message: state.posts.newPostText, likes: 0}
+        state.posts.newPostText = '';
         state.posts.postData.push(newPost);
         reRenderEntireTree(state);
     }
+
+    export let updateNewPostText = (text) => {
+        state.posts.newPostText = text;
+        reRenderEntireTree(state);
+    }
+
+    window.state = state;
 
     export default state;
     

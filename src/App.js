@@ -15,6 +15,8 @@ function App(props) {
             render={() => <Content 
               addPost={props.addPost}
               postData={props.state.posts.postData} 
+              newPostText={props.state.posts.newPostText}
+              updateNewPostText = {props.updateNewPostText}
               />} />
           <Route path="/Dialogs" 
             render={() => <Dialogs 
