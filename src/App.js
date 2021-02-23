@@ -21,7 +21,11 @@ function App(props) {
           <Route path="/Dialogs" 
             render={() => <Dialogs 
               dialogsData={props.state.messages.dialogsData} 
-              messagesData={props.state.messages.messagesData} />} />
+              messagesData={props.state.messages.messagesData} 
+              addMessage={props.addMessage}
+              updateNewMessageText={props.updateNewMessageText}
+              newMessageText={props.state.messages.newMessageText}
+              />} />
         </div>
       </div>
 

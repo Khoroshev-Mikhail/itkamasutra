@@ -21,7 +21,8 @@ import { reRenderEntireTree } from "../render";
                 {id: 2, message: 'Второе сообщение'},
                 {id: 3, message: 'Третье сообщение'},
                 {id: 4, message: 'Четвёртое сообщение'},
-              ]
+              ],
+            newMessageText : 'New message',
         },
         friends : {
             friendsData : [
@@ -40,8 +41,21 @@ import { reRenderEntireTree } from "../render";
         reRenderEntireTree(state);
     }
 
+    export let addMessage = () => {
+        let id = state.messages.messagesData.length + 1;
+        let newMessage = {id: id, message: state.messages.newMessageText}
+        state.messages.newMessageText = '';
+        state.messages.messagesData.push(newMessage);
+        reRenderEntireTree(state);
+    }
+
     export let updateNewPostText = (text) => {
         state.posts.newPostText = text;
+        reRenderEntireTree(state);
+    }
+
+    export let updateNewMessageText = (text) => {
+        state.messages.newMessageText = text;
         reRenderEntireTree(state);
     }
 
