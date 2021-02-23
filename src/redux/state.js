@@ -1,4 +1,6 @@
-import { reRenderEntireTree } from "../render";
+let reRenderEntireTree = () => {
+    console.log('ara');
+}
 
   let state = {
         posts : {
@@ -33,6 +35,8 @@ import { reRenderEntireTree } from "../render";
         }
     }
 
+    export default state;
+
     export let addPost = () => {
         let id = state.posts.postData.length + 1;
         let newPost = {id: id, message: state.posts.newPostText, likes: 0}
@@ -60,6 +64,9 @@ import { reRenderEntireTree } from "../render";
     }
 
     window.state = state;
+    
+    export let subscribe =(observer) => {
+        reRenderEntireTree = observer;
+    }
 
-    export default state;
     
