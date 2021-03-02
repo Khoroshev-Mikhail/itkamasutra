@@ -1,8 +1,5 @@
-let reRenderEntireTree = () => {
-    console.log('ara');
-}
-
-  let state = {
+let store = {
+    _state : {
         posts : {
             postData : [
             {id: 1, message: 'Hi, how are you?', likes: 15},
@@ -17,13 +14,13 @@ let reRenderEntireTree = () => {
                 {id: 2, name: 'Фрол'},
                 {id: 3, name: 'Мама'},
                 {id: 4, name: 'Лена'},
-              ],
+                ],
             messagesData : [
                 {id: 1, message: 'Перове сообщение'},
                 {id: 2, message: 'Второе сообщение'},
                 {id: 3, message: 'Третье сообщение'},
                 {id: 4, message: 'Четвёртое сообщение'},
-              ],
+                ],
             newMessageText : 'New message',
         },
         friends : {
@@ -33,40 +30,44 @@ let reRenderEntireTree = () => {
                 {name: 'Таня', id:3},
             ]
         }
-    }
+    },
+    reRenderEntireTree(){
+        console.log('ara');
+    },
+    getState(){
+        return this._state;
+    },
+    addPost(){
+        let id = this._state.posts.postData.length + 1;
+        let newPost = {id: id, message: this._state.posts.newPostText, likes: 0}
+        this._state.posts.newPostText = '';
+        this._state.posts.postData.push(newPost);
+        this._reRenderEntireTree(this._state);
+    },
+    addMessage(){
+        let id = this._state.messages.messagesData.length + 1;
+        let newMessage = {id: id, message: this._state.messages.newMessageText}
+        this._state.messages.newMessageText = '';
+        this._state.messages.messagesData.push(newMessage);
+        this._reRenderEntireTree(this._state);
+    },
+    updateNewPostText(text){
+        this._state.posts.newPostText = text;
+        this._reRenderEntireTree(this._state);
+    },
+    updateNewMessageText(text){
+        this._state.messages.newMessageText = text;
+        this._reRenderEntireTree(this._state);
+    },
+    subscribe(observer){
+        this._reRenderEntireTree = observer;
+    },
 
-    export default state;
+}
 
-    export let addPost = () => {
-        let id = state.posts.postData.length + 1;
-        let newPost = {id: id, message: state.posts.newPostText, likes: 0}
-        state.posts.newPostText = '';
-        state.posts.postData.push(newPost);
-        reRenderEntireTree(state);
-    }
+export default store;
 
-    export let addMessage = () => {
-        let id = state.messages.messagesData.length + 1;
-        let newMessage = {id: id, message: state.messages.newMessageText}
-        state.messages.newMessageText = '';
-        state.messages.messagesData.push(newMessage);
-        reRenderEntireTree(state);
-    }
-
-    export let updateNewPostText = (text) => {
-        state.posts.newPostText = text;
-        reRenderEntireTree(state);
-    }
-
-    export let updateNewMessageText = (text) => {
-        state.messages.newMessageText = text;
-        reRenderEntireTree(state);
-    }
-
-    window.state = state;
     
-    export let subscribe =(observer) => {
-        reRenderEntireTree = observer;
-    }
+window.store = store;
 
     
