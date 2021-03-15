@@ -9,22 +9,19 @@ function App(props) {
   return (
       <div className="app-wrapper">
         <Header />
-        <Nav friendBar = {props.state.friends.friendsData}/>
+        <Nav state = {props.state}/>
         <div className="content">
           <Route path="/Content" 
-            render={() => <Content 
-              addPost={props.addPost}
-              postData={props.state.posts.postData} 
-              newPostText={props.state.posts.newPostText}
-              updateNewPostText = {props.updateNewPostText}
+              render={() => 
+                <Content 
+                  dispatch={props.dispatch}
+                  state={props.state}
               />} />
           <Route path="/Dialogs" 
-            render={() => <Dialogs 
-              dialogsData={props.state.messages.dialogsData} 
-              messagesData={props.state.messages.messagesData} 
-              addMessage={props.addMessage}
-              updateNewMessageText={props.updateNewMessageText}
-              newMessageText={props.state.messages.newMessageText}
+              render={() => 
+                <Dialogs 
+                  dispatch={props.dispatch}
+                  state={props.state}
               />} />
         </div>
       </div>

@@ -8,18 +8,18 @@ import React from 'react'
 
 
 const Dialogs = (props) => {
-
-    let dialogs = props.dialogsData.map(el => <DialogsItem name={el.name} id={el.id}/>);
-    let messages = props.messagesData.map(el => <Messages message={el.message}/>);
+    let dialogs = props.state.messages.dialogsData.map(el => <DialogsItem name={el.name} id={el.id}/>);
+    let messages = props.state.messages.messagesData.map(el => <Messages message={el.message}/>);
 
     let textarea = React.createRef();
 
     let addMessage = () => {
-        props.addMessage();
+        props.dispatch({type : 'ADD-MESSAGE'});
     }
 
     let onMessageChange = () => {
-        props.updateNewMessageText(textarea.current.value)
+        let text = textarea.current.value;
+        props.dispatch({type : 'UPDATE-MESSAGE', newMessageText : text});
     }
 
     return (
@@ -28,7 +28,7 @@ const Dialogs = (props) => {
                 {dialogs}
             </div>
             <div>
-                <textarea ref={textarea} value={props.newMessageText} onChange={onMessageChange}></textarea>
+                <textarea ref={textarea} value={props.state.messages.newMessageText} onChange={onMessageChange}></textarea>
                 
                 <p><button onClick={addMessage}>addMessage</button></p>
                 {messages}

@@ -21,7 +21,7 @@ const Nav = (props) => {
                 <a href="">Settings</a>
             </div>
 
-            <FriendsBar friendsBar = {props.friendBar} />
+            <FriendsBar state = {props.state} />
 
         </nav>
     );

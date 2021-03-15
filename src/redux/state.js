@@ -37,30 +37,29 @@ let store = {
     getState(){
         return this._state;
     },
-    addPost(){
-        let id = this._state.posts.postData.length + 1;
-        let newPost = {id: id, message: this._state.posts.newPostText, likes: 0}
-        this._state.posts.newPostText = '';
-        this._state.posts.postData.push(newPost);
-        this._reRenderEntireTree(this._state);
-    },
-    addMessage(){
-        let id = this._state.messages.messagesData.length + 1;
-        let newMessage = {id: id, message: this._state.messages.newMessageText}
-        this._state.messages.newMessageText = '';
-        this._state.messages.messagesData.push(newMessage);
-        this._reRenderEntireTree(this._state);
-    },
-    updateNewPostText(text){
-        this._state.posts.newPostText = text;
-        this._reRenderEntireTree(this._state);
-    },
-    updateNewMessageText(text){
-        this._state.messages.newMessageText = text;
-        this._reRenderEntireTree(this._state);
-    },
     subscribe(observer){
         this._reRenderEntireTree = observer;
+    },
+    dispatch(action){
+        if(action.type === 'UPDATE-POST'){
+            this._state.posts.newPostText = action.newPostText;
+            this._reRenderEntireTree(this._state);
+        }else if(action.type === 'ADD-POST'){
+            let id = this._state.posts.postData.length + 1;
+            let newPost = {id: id, message: this._state.posts.newPostText, likes: 0}
+            this._state.posts.newPostText = '';
+            this._state.posts.postData.push(newPost);
+            this._reRenderEntireTree(this._state);
+        }else if (action.type === 'UPDATE-MESSAGE'){
+            this._state.messages.newMessageText = action.newMessageText;
+            this._reRenderEntireTree(this._state);
+        } else if (action.type = 'ADD-MESSAGE'){
+            let id = this._state.messages.messagesData.length + 1;
+            let newMessage = {id: id, message: this._state.messages.newMessageText}
+            this._state.messages.newMessageText = '';
+            this._state.messages.messagesData.push(newMessage);
+            this._reRenderEntireTree(this._state);
+        }
     },
 
 }
