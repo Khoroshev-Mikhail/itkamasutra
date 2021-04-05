@@ -1,3 +1,6 @@
+import dialogsreducer from "./dialogsreducer";
+import postreducer from "./postreducer";
+
 let store = {
     _state : {
         posts : {
@@ -41,40 +44,16 @@ let store = {
         this._reRenderEntireTree = observer;
     },
     dispatch(action){
-        if(action.type === 'UPDATE-POST'){
-            this._state.posts.newPostText = action.newPostText;
-            this._reRenderEntireTree(this._state);
-        }else if(action.type === 'ADD-POST'){
-            let id = this._state.posts.postData.length + 1;
-            let newPost = {id: id, message: this._state.posts.newPostText, likes: 0}
-            this._state.posts.newPostText = '';
-            this._state.posts.postData.push(newPost);
-            this._reRenderEntireTree(this._state);
-        }else if (action.type === 'UPDATE-MESSAGE'){
-            this._state.messages.newMessageText = action.newMessageText;
-            this._reRenderEntireTree(this._state);
-        } else if (action.type = 'ADD-MESSAGE'){
-            let id = this._state.messages.messagesData.length + 1;
-            let newMessage = {id: id, message: this._state.messages.newMessageText}
-            this._state.messages.newMessageText = '';
-            this._state.messages.messagesData.push(newMessage);
-            this._reRenderEntireTree(this._state);
-        }
+        postreducer(this._state.posts, action);
+        dialogsreducer(this._state.messages, action);
+        this._reRenderEntireTree(this._state);
     },
-
+    
 }
 
 export default store;
 
-const ADD_POST = 'ADD-POST';
-const UPDATE_POST = 'UPDATE-POST';
-export const addPostActionCreator = () => ({type : ADD_POST})
-export const updatePostActionCreator = (text) => ({type : UPDATE_POST, newPostText : text}) 
 
-const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_MESSAGE = 'UPDATE-MESSAGE';
-export const addMessageActionCreator = () => ({type : ADD_MESSAGE})
-export const updateMessageActionCreator = (text) => ({type : UPDATE_MESSAGE, newMessageText : text}) 
 
 window.store = store;
 
