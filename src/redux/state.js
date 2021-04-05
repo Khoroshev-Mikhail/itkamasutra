@@ -71,6 +71,11 @@ const UPDATE_POST = 'UPDATE-POST';
 export const addPostActionCreator = () => ({type : ADD_POST})
 export const updatePostActionCreator = (text) => ({type : UPDATE_POST, newPostText : text}) 
 
+const ADD_MESSAGE = 'ADD-MESSAGE';
+const UPDATE_MESSAGE = 'UPDATE-MESSAGE';
+export const addMessageActionCreator = () => ({type : ADD_MESSAGE})
+export const updateMessageActionCreator = (text) => ({type : UPDATE_MESSAGE, newMessageText : text}) 
+
 window.store = store;
 
     
