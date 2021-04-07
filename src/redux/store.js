@@ -1,5 +1,6 @@
 import dialogsreducer from "./dialogsreducer";
 import postreducer from "./postreducer";
+import sidebarreducer from "./postreducer";
 
 let store = {
     _state : {
@@ -46,6 +47,7 @@ let store = {
     dispatch(action){
         postreducer(this._state.posts, action);
         dialogsreducer(this._state.messages, action);
+        sidebarreducer(this._state.friends, action);
         this._reRenderEntireTree(this._state);
     },
     

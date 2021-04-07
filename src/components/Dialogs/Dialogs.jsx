@@ -5,10 +5,8 @@ import Messages from './Messages/Messages.jsx';
 import React from 'react'
 import { addMessageActionCreator, updateMessageActionCreator } from '../../redux/dialogsreducer';
 
-
-
-
 const Dialogs = (props) => {
+
     let dialogs = props.state.messages.dialogsData.map(el => <DialogsItem name={el.name} id={el.id}/>);
     let messages = props.state.messages.messagesData.map(el => <Messages message={el.message}/>);
 

@@ -4,9 +4,7 @@ import React from 'react';
 import { addPostActionCreator, updatePostActionCreator } from '../../../redux/postreducer';
 
 const MyPosts = (props) => {
-
-console.log(props)
-
+    console.log(props.state)
     let postData = props.state.posts.postData.map(el => <Post message={el.message} likeCount={el.likes} id={el.id} />);
     
     let textarea = React.createRef();

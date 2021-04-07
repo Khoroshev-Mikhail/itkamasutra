@@ -1,4 +1,13 @@
-const postreducer = (state, action) => {
+let initialState = {
+        postData : [
+        {id: 1, message: 'Hi, how are you?', likes: 15},
+        {id: 2, message: 'I am fine!', likes: 122},
+        {id: 3, message: 'we are fine too', likes: 222},
+        ],
+        newPostText : 'it-kamasutra.com',
+}
+
+const postreducer = (state = initialState, action) => {
     switch (action.type) {
         case 'UPDATE-POST' : 
             state.newPostText = action.newPostText;
