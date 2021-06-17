@@ -2,7 +2,7 @@ import './App.css';
 import Header from './components/Header/Header.jsx';
 import Nav from './components/Nav/Nav.jsx';
 import Content from './components/Profile/Content.jsx';
-import Dialogs from './components/Dialogs/Dialogs.jsx';
+import DialogsContainer from './components/Dialogs/DialogsContainer.jsx';
 import {Route } from 'react-router-dom';
 
 function App(props) {
@@ -19,7 +19,7 @@ function App(props) {
               />} />
           <Route path="/Dialogs" 
               render={() => 
-                <Dialogs 
+                <DialogsContainer 
                   dispatch={props.dispatch}
                   state={props.state}
               />} />

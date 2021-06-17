@@ -56,7 +56,7 @@ let store = {
 export default store;
 
 
-
-window.store = store;
+//не помню за чем это
+window.store = store; 
 
     
