@@ -14,11 +14,11 @@ const MyPosts = (props) => {
         let text = textarea.current.value;
         props.updateNewPostText(text);
     }
-    let postData = props.state.posts.postData.map(el => <Post message={el.message} likeCount={el.likes} id={el.id} />);
+    let postData = props.postData.map(el => <Post message={el.message} likeCount={el.likes} id={el.id} />);
     return(
         <div className={css.my_posts}>
             <div>
-            <textarea ref={textarea} value={props.state.posts.newPostText} onChange={onPostChange}>Write new post</textarea><br />
+            <textarea ref={textarea} value={props.newPostText} onChange={onPostChange}>Write new post</textarea><br />
             <button onClick={ addPost }>Add Post</button>
             </div>
             <div className={css.posts}>

@@ -24,11 +24,12 @@ const dialogsreducer = (state = initialState, action) => {
             return stateCopy;
         case 'ADD-MESSAGE' :
             let id = state.messagesData.length + 1;
-            let newMessage = {id: id, message: state.newMessageText}
-            stateCopy = {...state};
+            stateCopy = {...state, 
+                messagesData : [...state.messagesData, 
+                    {id: id, message: state.newMessageText}
+                ]
+            }
             stateCopy.newMessageText = '';
-            stateCopy.messagesData = [...state.messagesData]
-            stateCopy.messagesData.push(newMessage);
             return stateCopy;
         default :
             return state;

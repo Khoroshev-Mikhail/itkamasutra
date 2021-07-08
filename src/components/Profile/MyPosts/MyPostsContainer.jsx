@@ -1,26 +1,11 @@
-import React from 'react';
 import { addPostActionCreator, updatePostActionCreator } from '../../../redux/postreducer';
 import MyPosts from './MyPosts';
 import {connect} from 'react-redux'
 
-/*const MyPostsContainer = (props) => {
-    return (
-            <MyPosts 
-            state={props.state} 
-            updateNewPostText={(text) => {
-                props.dispatch(updatePostActionCreator(text))
-            }}
-            addPostActionCreator={()=>{
-                props.dispatch(addPostActionCreator())
-            }}
-            />
-    );
-}
-
-*/
 const f1 = (state) => {
     return {
-        state : state
+        postData : state.posts.postData,
+        newPostText : state.posts.newPostText
     }
 }
 

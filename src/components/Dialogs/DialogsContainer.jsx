@@ -1,26 +1,11 @@
-import React from 'react'
 import { connect } from 'react-redux';
 import { addMessageActionCreator, updateMessageActionCreator } from '../../redux/dialogsreducer';
 import Dialogs from './Dialogs';
 
-/*const DialogsContainer = (props) => {
-
-    return (
-        <Dialogs 
-        updateMessageActionCreator={(text) => {
-            props.dispatch(updateMessageActionCreator(text));
-        }}
-        addMessageActionCreator={()=>{
-            props.dispatch(addMessageActionCreator());
-        }}
-        messages={props.state.messages}
-        />
-    );
-}*/
-
 let f1 = (state) => {
     return {
-        messages : state.messages
+        messages : state.messages,
+        newMessageText : state.messages.newMessageText
     }
 }
 

@@ -11,16 +11,17 @@ const postreducer = (state = initialState, action) => {
     let stateCopy;
     switch (action.type) {
         case 'UPDATE-POST' : 
-            stateCopy = {...state}
-            stateCopy.newPostText = action.newPostText;
+            stateCopy = {...state, 
+                newPostText : action.newPostText}
             return stateCopy;
         case 'ADD-POST' :
             let id = state.postData.length + 1;
-            let newPost = {id: id, message: state.newPostText, likes: 0}
-            stateCopy = {...state};
+            stateCopy = {...state,
+                postData : [...state.postData, 
+                    {id: id, message: state.newPostText, likes: 0}
+                ]
+            };
             stateCopy.newPostText = '';
-            stateCopy.postData = [...state.postData]
-            stateCopy.postData.push(newPost);
             return stateCopy;
         default :
             return state;
