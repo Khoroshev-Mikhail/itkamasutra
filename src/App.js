@@ -3,6 +3,7 @@ import Header from './components/Header/Header.jsx';
 import Nav from './components/Nav/Nav.jsx';
 import Content from './components/Profile/Content.jsx';
 import DialogsContainer from './components/Dialogs/DialogsContainer.jsx';
+import Users from './components/Users/Users'
 import {Route } from 'react-router-dom';
 
 function App(props) {
@@ -23,6 +24,11 @@ function App(props) {
                   dispatch={props.dispatch}
                   state={props.state}
               />} />
+            <Route path="/Users"
+              render ={()=>
+                <Users />
+              }
+            />
         </div>
       </div>
 

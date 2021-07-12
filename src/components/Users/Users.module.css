@@ -1,0 +1,39 @@
+.container {
+    display: flex;
+    background-color: red;
+    width: 100%;
+    border: 1px solid black;
+    flex-direction: row;
+    justify-content: start;
+    padding: 5px;
+    align-items: stretch;
+}
+
+.left{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.imgbox{
+    background-color: black;
+    width: 100px;
+    height: 100px;
+    margin-right: 5px;
+}
+.right{
+    width: 500px;
+    margin: 10px;
+    height: auto;
+}
+.right textarea {
+    width: 90%;
+    height: 90%;
+}
+.name h6 {
+    margin-bottom: 5px;
+    margin-top: 0px;
+}
+
+.button button {
+    margin-top: 5px;
+}
