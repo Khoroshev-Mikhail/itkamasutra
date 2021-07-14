@@ -3,8 +3,8 @@ import Header from './components/Header/Header.jsx';
 import Nav from './components/Nav/Nav.jsx';
 import Content from './components/Profile/Content.jsx';
 import DialogsContainer from './components/Dialogs/DialogsContainer.jsx';
-import Users from './components/Users/Users'
 import {Route } from 'react-router-dom';
+import UsersContainer from './components/Users/UsersContainer';
 
 function App(props) {
   return (
@@ -26,9 +26,10 @@ function App(props) {
               />} />
             <Route path="/Users"
               render ={()=>
-                <Users />
-              }
-            />
+                <UsersContainer
+                  dispatch={props.dispatch}
+                  state={props.state}
+              />} />
         </div>
       </div>
 

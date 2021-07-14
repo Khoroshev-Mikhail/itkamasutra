@@ -20,6 +20,10 @@
     height: 100px;
     margin-right: 5px;
 }
+.imgbox img{
+    width: 100px;
+    height: 100px;
+}
 .right{
     width: 500px;
     margin: 10px;

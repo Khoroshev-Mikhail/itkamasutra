@@ -17,6 +17,4 @@ const f2 = (dispatch) => {
 }
 
 let MyPostsContainer = connect(f1, f2)(MyPosts)
-
-
 export default MyPostsContainer;
