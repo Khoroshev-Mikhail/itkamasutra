@@ -5,6 +5,7 @@ import Content from './components/Profile/Content.jsx';
 import DialogsContainer from './components/Dialogs/DialogsContainer.jsx';
 import {Route } from 'react-router-dom';
 import UsersContainer from './components/Users/UsersContainer';
+import MyAppContainer from './components/MyApp/MyAppContainer'
 
 function App(props) {
   return (
@@ -24,9 +25,15 @@ function App(props) {
                   dispatch={props.dispatch}
                   state={props.state}
               />} />
-            <Route path="/Users"
+          <Route path="/Users"
+            render ={()=>
+              <UsersContainer
+                dispatch={props.dispatch}
+                state={props.state}
+            />} />
+            <Route path="/MyApp"
               render ={()=>
-                <UsersContainer
+                <MyAppContainer
                   dispatch={props.dispatch}
                   state={props.state}
               />} />

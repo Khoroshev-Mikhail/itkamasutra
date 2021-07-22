@@ -21,7 +21,7 @@ const Nav = (props) => {
                 <a href="">Music</a>
             </div>
             <div>
-                <a href="">Settings</a>
+                <NavLink to="/MyApp" activeClassName={css.active}>MyApp</NavLink>
             </div>
 
             <FriendsBar state = {props.state} />
