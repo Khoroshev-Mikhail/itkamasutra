@@ -5,13 +5,11 @@ import * as axios from 'axios'
 class Users extends React.Component{
     constructor(props){
         super(props);
-
         //Получаем юзеров
         axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
             console.log(response.data.items)
             this.props.setUsers(response.data.items);
         })
-        
     }
     /*getUsers=()=>{
         if(this.props.users.length === 0){
