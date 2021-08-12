@@ -2,42 +2,43 @@ import React from 'react';
 import css from './Users.module.css';
 import * as axios from 'axios'
 
-const Users = (props) => {
-    let getUsers=()=>{
-        if(props.users.length === 0){
-            axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
-                console.log(response.data.items)
-                props.setUsers(response.data.items);
-            })
-        }
+class Users extends React.Component{
+    constructor(props){
+        super(props)
     }
-    return (
-        <div>
-            <button onClick={getUsers}>Get Users</button>
-            {props.users.map(u =>
+    componentDidMount(){
+        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
+            this.props.setUsers(response.data.items);
+        })
+    }
+    render(){
+        return (
             <div>
-                <div className={css.container}>
-
-                <div className={css.left}>
-                    <div className={css.name}>
-                        <h6>{u.name}</h6>
+                {this.props.users.map(u =>
+                <div>
+                    <div className={css.container}>
+    
+                    <div className={css.left}>
+                        <div className={css.name}>
+                            <h6>{u.name}</h6>
+                        </div>
+                        <div className={css.imgbox}> 
+                            <img src={u.photo}/>
+                        </div>
+                        <div className={css.button}>
+                            <button onClick={()=>{this.props.subscribe(u.id)}}>{u.followed ? 'Un' : ''}Follow</button>
+                        </div>
                     </div>
-                    <div className={css.imgbox}> 
-                        <img src={u.photo}/>
+    
+                    <div className={css.right}>
+                        <textarea>{u.status}</textarea>
                     </div>
-                    <div className={css.button}>
-                        <button onClick={()=>{props.subscribe(u.id)}}>{u.followed ? 'Un' : ''}Follow</button>
+    
                     </div>
-                </div>
-
-                <div className={css.right}>
-                    <textarea>{u.status}</textarea>
-                </div>
-
-                </div>
-            </div>)}
-        </div>
-    )
+                </div>)}
+            </div>
+        )
+    }
 }
 
 export default Users;

@@ -1,6 +1,6 @@
 import { subscribeAC, setUsersAC } from '../../redux/userreducer'
 import {connect} from 'react-redux'
-import Users from './UsersC'
+import Users from './Users'
 
 const f1 = (state) => {
     return {
