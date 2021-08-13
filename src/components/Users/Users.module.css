@@ -41,3 +41,13 @@
 .button button {
     margin-top: 5px;
 }
+
+.pages p {
+    float: left;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.selectedP {
+    font-weight: bold;
+}
