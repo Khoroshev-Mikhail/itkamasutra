@@ -18,13 +18,12 @@ let Users = (props) =>{
             {props.users.map(u =>
             <div>
                 <div className={css.container}>
-
                 <div className={css.left}>
                     <div className={css.name}>
                         <h6>{u.name}</h6>
                     </div>
                     <div className={css.imgbox}> 
-                        <img src={u.photo}/>
+                        <img src={u.photos.small}/>
                     </div>
                     <div className={css.button}>
                         <button onClick={()=>{props.subscribe(u.id)}}>{u.followed ? 'Un' : ''}Follow</button>
