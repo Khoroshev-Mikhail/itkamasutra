@@ -1,4 +1,4 @@
-import { subscribeAC, setUsersAC, setCurrentPageAC, setTotalCount, toggleFetching} from '../../redux/userreducer'
+import { subscribe, setUsers, setCurrentPage, setTotalCount, toggleFetching} from '../../redux/userreducer'
 import {connect} from 'react-redux'
 import * as axios from 'axios'
 import Users from './Users'
@@ -9,11 +9,8 @@ class UsersAPI extends React.Component{
         super(props)
     }
     componentDidMount(){
-        console.log(this.props.fetching)
-        this.props.toggleFetching(true)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
             this.props.toggleFetching(false)
-            console.log(this.props.fetching)
             this.props.setUsers(response.data.items);
             this.props.setTotalCount(response.data.totalCount)
         })
@@ -24,7 +21,6 @@ class UsersAPI extends React.Component{
         this.props.setCurrentPage(Page)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${Page}&count=${this.props.pageSize}`).then(response => {
             this.props.toggleFetching(false)
-            console.log(this.props.fetching)
             this.props.setUsers(response.data.items);
         })
     }
@@ -48,7 +44,7 @@ const f1 = (state) => {
     }
 }
 
-const f2 = (dispatch) => {
+/*const f2 = (dispatch) => {
     return {
         subscribe : (id) => {dispatch(subscribeAC(id))},
         setUsers : (users) => {dispatch(setUsersAC(users))},
@@ -56,7 +52,13 @@ const f2 = (dispatch) => {
         setTotalCount : (totalCount) => {dispatch(setTotalCount(totalCount))},
         toggleFetching : (isFetching) => {dispatch(toggleFetching(isFetching))},
     }
-}
+}*/
 
-let UsersContainer = connect(f1, f2)(UsersAPI);
+let UsersContainer = connect(f1, {
+    subscribe,
+    setUsers,
+    setCurrentPage,
+    setTotalCount,
+    toggleFetching,
+    })(UsersAPI);
 export default UsersContainer;

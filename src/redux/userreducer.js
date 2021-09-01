@@ -39,9 +39,9 @@ const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT'
 const TOGGLE_FETCHING = 'TOGGLE_FETCHING'
 
-export let subscribeAC = (id) => ({type: SUBSCRIBE, userId : id})
-export let setUsersAC = (users) => ({type: SET_USERS, users: users})
-export let setCurrentPageAC = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage: currentPage})
+export let subscribe = (id) => ({type: SUBSCRIBE, userId : id})
+export let setUsers = (users) => ({type: SET_USERS, users: users})
+export let setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage: currentPage})
 export let setTotalCount = (totalCount) => ({type: SET_TOTAL_COUNT, totalCount: totalCount})
 export let toggleFetching = (isFetching) => ({type : TOGGLE_FETCHING, isFetching : isFetching})
 
