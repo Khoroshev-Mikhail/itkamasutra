@@ -44,16 +44,6 @@ const f1 = (state) => {
     }
 }
 
-/*const f2 = (dispatch) => {
-    return {
-        subscribe : (id) => {dispatch(subscribeAC(id))},
-        setUsers : (users) => {dispatch(setUsersAC(users))},
-        setCurrentPage : (currentPage) => {dispatch(setCurrentPageAC(currentPage))},
-        setTotalCount : (totalCount) => {dispatch(setTotalCount(totalCount))},
-        toggleFetching : (isFetching) => {dispatch(toggleFetching(isFetching))},
-    }
-}*/
-
 let UsersContainer = connect(f1, {
     subscribe,
     setUsers,

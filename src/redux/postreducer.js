@@ -5,6 +5,7 @@ let initialState = {
         {id: 3, message: 'we are fine too', likes: 222},
         ],
         newPostText : 'it-kamasutra.com',
+        profile : null
 }
 
 const postreducer = (state = initialState, action) => {
@@ -23,6 +24,8 @@ const postreducer = (state = initialState, action) => {
             };
             stateCopy.newPostText = '';
             return stateCopy;
+        case 'SET-USER-PROFILE' :
+            return {...state, profile : action.profile}
         default :
             return state;
     }
@@ -30,7 +33,9 @@ const postreducer = (state = initialState, action) => {
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_POST = 'UPDATE-POST';
+const SET_USER_PROFILE = 'SET-USER-PROFILE';
 export const addPostActionCreator = () => ({type : ADD_POST})
 export const updatePostActionCreator = (text) => ({type : UPDATE_POST, newPostText : text}) 
+export const setUserProfileAC = (profile) => ({type: SET_USER_PROFILE, profile : profile})
 
 export default postreducer;

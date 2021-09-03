@@ -1,6 +1,6 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import css from './Users.module.css';
-import * as axios from 'axios'
 
 let Users = (props) =>{
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
@@ -23,7 +23,9 @@ let Users = (props) =>{
                         <h6>{u.name}</h6>
                     </div>
                     <div className={css.imgbox}> 
-                        <img src={u.photos.small}/>
+                        <NavLink to={'profile/' + u.id}>
+                            <img src={u.photos.small}/>
+                        </NavLink>
                     </div>
                     <div className={css.button}>
                         <button onClick={()=>{props.subscribe(u.id)}}>{u.followed ? 'Un' : ''}Follow</button>

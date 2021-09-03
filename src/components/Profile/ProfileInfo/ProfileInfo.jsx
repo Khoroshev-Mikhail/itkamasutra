@@ -1,13 +1,18 @@
+import { connect } from 'react-redux';
 import css from './ProfileInfo.module.css';
 
-const ProfileInfo = () => {
+const ProfileInfo = (props) => {
+    if(!props.profile){
+        return 'zzz'
+    }
     return (
         <div>
             <div>
-                header
+                header LJL
             </div>
             <div>
-            ava + descs
+                <img src={props.profile.photos.large} />
+                <p>{props.profile.aboutMe}</p>
             </div>
         </div>
     );

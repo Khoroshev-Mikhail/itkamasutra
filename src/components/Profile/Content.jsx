@@ -5,7 +5,7 @@ import ProfileInfo from './ProfileInfo/ProfileInfo.jsx';
 const Content = (props) => {
     return (
         <div>
-            <ProfileInfo />
+            <ProfileInfo profile={props.profile} />
             <MyPosts
                 dispatch={props.dispatch}
                 state={props.state}
