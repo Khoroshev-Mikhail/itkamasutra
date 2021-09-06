@@ -14,7 +14,7 @@ function App(props) {
         <Header />
         <Nav state = {props.state}/>
         <div className="content">
-          <Route path="/Profile" 
+          <Route path="/profile/:userId?" 
             render={() => 
               <ContentContainer 
                 dispatch={props.dispatch}
