@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addMessageActionCreator, updateMessageActionCreator } from '../../redux/dialogsreducer';
+import { addMessage, updateMessage } from '../../redux/dialogsreducer';
 import Dialogs from './Dialogs';
 
 let f1 = (state) => {
@@ -9,13 +9,9 @@ let f1 = (state) => {
     }
 }
 
-let f2 = (dispatch) => {
-    return {
-        updateMessageActionCreator : (text) => { dispatch(updateMessageActionCreator(text)); },
-        addMessageActionCreator : ()=>{ dispatch(addMessageActionCreator()); }
-    }
-}
 
-let DialogsContainer = connect(f1, f2)(Dialogs);
+let DialogsContainer = connect(f1, 
+    {addMessage, updateMessage})
+    (Dialogs);
 
 export default DialogsContainer;

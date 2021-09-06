@@ -7,12 +7,12 @@ const MyPosts = (props) => {
     let textarea = React.createRef();
 
     let addPost = () => {
-        props.addPostActionCreator();
+        props.addPost();
     }
     
     let onPostChange = () => {
         let text = textarea.current.value;
-        props.updateNewPostText(text);
+        props.updatePost(text);
     }
     let postData = props.postData.map(el => <Post message={el.message} likeCount={el.likes} id={el.id} />);
     return(

@@ -1,4 +1,4 @@
-import { addPostActionCreator, updatePostActionCreator } from '../../../redux/postreducer';
+import { addPost, updatePost } from '../../../redux/postreducer';
 import MyPosts from './MyPosts';
 import {connect} from 'react-redux'
 
@@ -9,12 +9,8 @@ const f1 = (state) => {
     }
 }
 
-const f2 = (dispatch) => {
-    return {
-        updateNewPostText : (text) => {dispatch(updatePostActionCreator(text)) },
-        addPostActionCreator : ()=>{dispatch(addPostActionCreator())}
-    }
-}
 
-let MyPostsContainer = connect(f1, f2)(MyPosts)
+let MyPostsContainer = connect(f1, 
+    {addPost, updatePost}
+    )(MyPosts)
 export default MyPostsContainer;

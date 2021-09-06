@@ -1,4 +1,3 @@
-import { NavLink } from 'react-router-dom';
 import css from './Dialogs.module.css';
 import DialogsItem from './DialogItem/DialogItem.jsx';
 import Messages from './Messages/Messages.jsx';
@@ -12,12 +11,12 @@ const Dialogs = (props) => {
     let textarea = React.createRef();
 
     let addMessage = () => {
-        props.addMessageActionCreator();
+        props.addMessage();
     }
 
     let onMessageChange = () => {
         let text = textarea.current.value;
-        props.updateMessageActionCreator(text);
+        props.updateMessage(text);
     }
 
     return (
