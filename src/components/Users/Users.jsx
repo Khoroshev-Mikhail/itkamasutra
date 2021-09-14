@@ -29,9 +29,8 @@ let Users = (props) =>{
                         </NavLink>
                     </div>
                     <div className={css.button}>
-                        <button onClick={()=>{/*props.subscribe(u.id)*/
-                            axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, 
-                            {}, 
+                    {u.followed ? <button onClick={()=>{
+                            axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, 
                             {   withCredentials : true, 
                                 headers : { 'API-KEY' : 'a80ae102-d664-47c8-8d59-34949491d722'
                             }})
@@ -40,7 +39,20 @@ let Users = (props) =>{
                                     props.subscribe(u.id)
                                 }
                             })
-                        }}>{u.followed ? 'Un' : ''}Follow</button>
+                        }}>UnFollow</button> : 
+                        <button onClick={()=>{
+                            axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,  
+                            {},
+                            {   withCredentials : true, 
+                                headers : { 'API-KEY' : 'a80ae102-d664-47c8-8d59-34949491d722'
+                            }})
+                            .then(response => {
+                                if(response.data.resultCode == 0){
+                                    props.subscribe(u.id)
+                                }
+                            })
+                        }}>Follow</button>}
+                        
                     </div>
                 </div>
 
