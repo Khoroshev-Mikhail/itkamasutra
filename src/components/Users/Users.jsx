@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { usersAPI } from '../../API/api';
@@ -30,19 +29,35 @@ let Users = (props) =>{
                         </NavLink>
                     </div>
                     <div className={css.button}>
-                    {u.followed ? <button onClick={()=>{
+                    {u.followed ? <button disabled={props.followingProgress.some(id => id === u.id)} onClick={()=>{
+                            console.log(props.followingProgress)
+                            console.log(props.followingProgress.some(id => id === u.id))
+                            props.toggleProgress(true, u.id)
+                            console.log(props.followingProgress)
+                            console.log(props.followingProgress.some(id => id === u.id))
                             usersAPI.unFollow(u.id).then(data => {
                                 if(data.resultCode == 0){
                                     props.subscribe(u.id)
                                 }
                             })
+                            props.toggleProgress(false, u.id)
+                            console.log(props.followingProgress)
+                            console.log(props.followingProgress.some(id => id === u.id))
                         }}>UnFollow</button> : 
-                        <button onClick={()=>{
+                        <button disabled={props.followingProgress.some(id => id === u.id)} onClick={()=>{
+                            console.log(props.followingProgress)
+                            console.log(props.followingProgress.some(id => id === u.id))
+                            props.toggleProgress(true, u.id)
+                            console.log(props.followingProgress)
+                            console.log(props.followingProgress.some(id => id === u.id))
                             usersAPI.follow(u.id).then(data => {
                                 if(data.resultCode == 0){
                                     props.subscribe(u.id)
                                 }
                             })
+                            props.toggleProgress(false, u.id)
+                            console.log(props.followingProgress)
+                            console.log(props.followingProgress.some(id => id === u.id))
                         }}>Follow</button>}
                         
                     </div>

@@ -1,4 +1,4 @@
-import { subscribe, setUsers, setCurrentPage, setTotalCount, toggleFetching} from '../../redux/userreducer'
+import { subscribe, setUsers, setCurrentPage, setTotalCount, toggleFetching, toggleProgress} from '../../redux/userreducer'
 import {connect} from 'react-redux'
 import * as axios from 'axios'
 import Users from './Users'
@@ -40,7 +40,8 @@ const f1 = (state) => {
         pageSize : state.usersData.pageSize,
         totalUsersCount : state.usersData.totalUsersCount,
         currentPage : state.usersData.currentPage,
-        fetching : state.usersData.isFetching
+        fetching : state.usersData.isFetching,
+        followingProgress : state.usersData.followingProgress
     }
 }
 
@@ -49,6 +50,7 @@ let UsersContainer = connect(f1, {
     setUsers,
     setCurrentPage,
     setTotalCount,
-    toggleFetching,
+    toggleFetching, 
+    toggleProgress,
     })(UsersAPI);
 export default UsersContainer;
