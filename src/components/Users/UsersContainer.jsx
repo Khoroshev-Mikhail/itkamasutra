@@ -3,25 +3,25 @@ import {connect} from 'react-redux'
 import * as axios from 'axios'
 import Users from './Users'
 import React from 'react';
+import {usersAPI } from '../../API/api';
 
 class UsersAPI extends React.Component{
     constructor(props){
         super(props)
     }
     componentDidMount(){
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {withCredentials : true}).then(response => {
+        usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
             this.props.toggleFetching(false)
-            this.props.setUsers(response.data.items);
-            this.props.setTotalCount(response.data.totalCount)
+            this.props.setUsers(data.items);
+            this.props.setTotalCount(data.totalCount)
         })
     }
     setCurrentPage = (Page) => {
-        console.log(this.props.fetching)
         this.props.toggleFetching(true)
         this.props.setCurrentPage(Page)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${Page}&count=${this.props.pageSize}`, {withCredentials : true}).then(response => {
+        usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
             this.props.toggleFetching(false)
-            this.props.setUsers(response.data.items);
+            this.props.setUsers(data.items);
         })
     }
     render () {
