@@ -20,9 +20,9 @@ class UsersAPI extends React.Component{
         this.props.toggleFetching(true)
         this.props.setCurrentPage(Page)
         usersAPI.getUsers(Page, this.props.pageSize).then(data => {
-            this.props.toggleFetching(false)
             this.props.setUsers(data.items);
         })
+        this.props.toggleFetching(false)
     }
     render () {
         return(
