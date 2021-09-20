@@ -1,4 +1,4 @@
-import { subscribe, setUsers, setCurrentPage, setTotalCount, toggleFetching, toggleProgress, getUsers} from '../../redux/userreducer'
+import { subscribe, setUsers, setCurrentPage, setTotalCount, toggleFetching, toggleProgress, getUsers, followThunk, unFollowThunk} from '../../redux/userreducer'
 import {connect} from 'react-redux'
 import Users from './Users'
 import React from 'react';
@@ -42,5 +42,7 @@ let UsersContainer = connect(f1, {
     toggleFetching, 
     toggleProgress,
     getUsers,
+    followThunk,
+    unFollowThunk,
     })(UsersAPI);
 export default UsersContainer;

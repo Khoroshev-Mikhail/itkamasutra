@@ -30,22 +30,10 @@ let Users = (props) =>{
                     </div>
                     <div className={css.button}>
                     {u.followed ? <button disabled={props.followingProgress.some(id => id === u.id)} onClick={()=>{
-                            props.toggleProgress(true, u.id)
-                            usersAPI.unFollow(u.id).then(data => {
-                                if(data.resultCode == 0){
-                                    props.subscribe(u.id)
-                                    props.toggleProgress(false, u.id)
-                                }
-                            })
+                           props.unFollowThunk(u.id)
                         }}>UnFollow</button> : 
                         <button disabled={props.followingProgress.some (id => id === u.id)} onClick={()=>{
-                            props.toggleProgress(true, u.id)
-                            usersAPI.follow(u.id).then(data => {
-                                if(data.resultCode == 0){
-                                    props.subscribe(u.id)
-                                    props.toggleProgress(false, u.id)
-                                }
-                            })
+                            props.followThunk(u.id)
                         }}>Follow</button>}
                         
                     </div>

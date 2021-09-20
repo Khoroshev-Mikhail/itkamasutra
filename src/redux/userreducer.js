@@ -70,3 +70,27 @@ export const getUsers = (currentPage, pageSize) => {
         })
     }
 }
+
+export const followThunk = (id) => {
+    return (dispatch) => {
+        dispatch(toggleProgress(true, id))
+        usersAPI.follow(id).then(data => {
+            if(data.resultCode == 0){
+                dispatch(subscribe(id))
+                dispatch(toggleProgress(false, id))
+            }
+        })
+    }
+}
+
+export const unFollowThunk = (id) => {
+    return (dispatch) => {
+        dispatch(toggleProgress(true, id))
+        usersAPI.unFollow(id).then(data => {
+            if(data.resultCode == 0){
+                dispatch(subscribe(id))
+                dispatch(toggleProgress(false, id))
+            }
+        })
+    }
+}
