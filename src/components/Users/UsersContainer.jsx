@@ -1,6 +1,5 @@
-import { subscribe, setUsers, setCurrentPage, setTotalCount, toggleFetching, toggleProgress} from '../../redux/userreducer'
+import { subscribe, setUsers, setCurrentPage, setTotalCount, toggleFetching, toggleProgress, getUsers} from '../../redux/userreducer'
 import {connect} from 'react-redux'
-import * as axios from 'axios'
 import Users from './Users'
 import React from 'react';
 import {usersAPI } from '../../API/api';
@@ -10,19 +9,11 @@ class UsersAPI extends React.Component{
         super(props)
     }
     componentDidMount(){
-        usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-            this.props.toggleFetching(false)
-            this.props.setUsers(data.items);
-            this.props.setTotalCount(data.totalCount)
-        })
+        this.props.getUsers(this.props.currentPage, this.props.pageSize)
     }
     setCurrentPage = (Page) => {
-        this.props.toggleFetching(true)
         this.props.setCurrentPage(Page)
-        usersAPI.getUsers(Page, this.props.pageSize).then(data => {
-            this.props.setUsers(data.items);
-        })
-        this.props.toggleFetching(false)
+        this.props.getUsers(Page, this.props.pageSize)
     }
     render () {
         return(
@@ -52,5 +43,6 @@ let UsersContainer = connect(f1, {
     setTotalCount,
     toggleFetching, 
     toggleProgress,
+    getUsers,
     })(UsersAPI);
 export default UsersContainer;

@@ -13,7 +13,6 @@ let Users = (props) =>{
         <div className={css.pages}>
             <p className={props.currentPage === el && css.selectedP} onClick={()=>{props.setCurrentPage(el)}}>{el}</p>
         </div>)
-    console.log(props.followingProgress)
     return (
         <div>
             {pagesRender}

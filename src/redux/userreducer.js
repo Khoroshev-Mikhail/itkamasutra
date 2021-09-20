@@ -1,10 +1,12 @@
+import {usersAPI} from './../API/api'
+
 let initialState = {
     users : [],
     pageSize : 30,
     totalUsersCount : 30,
     currentPage : 1,
-    isFetching : true,
-    followingProgress : [2, 3]
+    isFetching : false,
+    followingProgress : []
 }
 
 const usersreducer = (state = initialState, action) => {
@@ -55,3 +57,16 @@ export let toggleFetching = (isFetching) => ({type : TOGGLE_FETCHING, isFetching
 export let toggleProgress = (isProgress, userId) => ({type : FOLLOWING_PROGRESS, isProgress : isProgress, userId : userId})
 
 export default usersreducer;
+
+//Thunks
+
+export const getUsers = (currentPage, pageSize) => {
+    return (dispatch) => {
+        dispatch(toggleFetching(true))
+        usersAPI.getUsers(currentPage, pageSize).then(data => {
+            dispatch(toggleFetching(false))
+            dispatch(setUsers(data.items))
+            dispatch(setTotalCount(data.totalCount))
+        })
+    }
+}
