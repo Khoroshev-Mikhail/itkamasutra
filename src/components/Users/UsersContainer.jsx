@@ -2,7 +2,6 @@ import { subscribe, setUsers, setCurrentPage, setTotalCount, toggleFetching, tog
 import {connect} from 'react-redux'
 import Users from './Users'
 import React from 'react';
-import {usersAPI } from '../../API/api';
 
 class UsersAPI extends React.Component{
     constructor(props){
@@ -12,7 +11,6 @@ class UsersAPI extends React.Component{
         this.props.getUsers(this.props.currentPage, this.props.pageSize)
     }
     setCurrentPage = (Page) => {
-        this.props.setCurrentPage(Page)
         this.props.getUsers(Page, this.props.pageSize)
     }
     render () {
