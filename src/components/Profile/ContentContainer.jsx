@@ -25,7 +25,8 @@ class ContentContainer extends React.Component {
 }
 const f1 = (state) => {
     return{
-        profile : state.posts.profile
+        profile : state.posts.profile,
+        isAuth : state.auth.isAuth
     }
 }
 

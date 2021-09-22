@@ -30,7 +30,8 @@ const f1 = (state) => {
         totalUsersCount : state.usersData.totalUsersCount,
         currentPage : state.usersData.currentPage,
         fetching : state.usersData.isFetching,
-        followingProgress : state.usersData.followingProgress
+        followingProgress : state.usersData.followingProgress,
+        isAuth : state.auth.isAuth
     }
 }
 
