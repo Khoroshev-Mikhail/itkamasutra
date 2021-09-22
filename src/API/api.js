@@ -31,3 +31,9 @@ export const usersAPI = {
         return instance.get(`profile/${id}`)
     }
 }
+
+export const authAPI = {
+    getAuth(){
+        return instance.get('https://social-network.samuraijs.com/api/1.0/auth/me')
+    }
+}

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import Content from './Content';
 import { setUserProfileAC, getUsersProfile } from '../../redux/postreducer';
 import { withRouter } from 'react-router';
-import { usersAPI } from '../../API/api';
 
 class ContentContainer extends React.Component {
     constructor(props){
