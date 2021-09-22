@@ -6,6 +6,7 @@ import {Route } from 'react-router-dom';
 import UsersContainer from './components/Users/UsersContainer';
 import MyAppContainer from './components/MyApp/MyAppContainer'
 import ContentContainer from './components/Profile/ContentContainer';
+import Login from './components/Login/Login.jsx';
 
 function App(props) {
   return (
@@ -36,6 +37,10 @@ function App(props) {
                 <MyAppContainer
                   dispatch={props.dispatch}
                   state={props.state}
+              />} />
+            <Route path="/Login"
+              render ={()=>
+                <Login
               />} />
         </div>
       </div>

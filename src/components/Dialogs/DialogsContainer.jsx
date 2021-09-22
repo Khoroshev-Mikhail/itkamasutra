@@ -5,7 +5,8 @@ import Dialogs from './Dialogs';
 let f1 = (state) => {
     return {
         messages : state.messages,
-        newMessageText : state.messages.newMessageText
+        newMessageText : state.messages.newMessageText,
+        isAuth : state.auth.isAuth
     }
 }
 

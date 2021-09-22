@@ -11,7 +11,7 @@ import {Provider} from 'react-redux'
 
 let reRenderEntireTree = (state) => {
     ReactDOM.render(
-      <React.StrictMode>
+      /*<React.StrictMode>*/
             <BrowserRouter>
               <Provider store={store}>
                   <App 
@@ -20,7 +20,7 @@ let reRenderEntireTree = (state) => {
                   />
                 </Provider>
             </BrowserRouter>
-      </React.StrictMode>,
+      /*</React.StrictMode>*/,
       document.getElementById('root')
     );
   }

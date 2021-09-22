@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Content from './Content';
 import { setUserProfileAC, getUsersProfile } from '../../redux/postreducer';
-import { withRouter } from 'react-router';
+import { withRouter, Redirect } from 'react-router';
 
 class ContentContainer extends React.Component {
     constructor(props){
@@ -12,12 +12,10 @@ class ContentContainer extends React.Component {
     componentDidMount(){
         let userId = this.props.match.params.userId;
         if(!userId) userId = 2;
-        /*usersAPI.getUserProfile(userId).then(response => {
-            this.props.setUserProfileAC(response.data);
-        })*/
         this.props.getUsersProfile(userId)
     }
     render(){
+        if(!this.props.isAuth) return <Redirect to={'/Login'} />
         return (
             <div>
                 <Content {...this.props} />
