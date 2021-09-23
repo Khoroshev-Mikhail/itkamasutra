@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Content from './Content';
 import { setUserProfileAC, getUsersProfile } from '../../redux/postreducer';
 import { withRouter, Redirect } from 'react-router';
+import { withAuthRedirect } from '../HOC/withAuthRedirect';
 
 class ContentContainer extends React.Component {
     constructor(props){
@@ -15,21 +16,17 @@ class ContentContainer extends React.Component {
         this.props.getUsersProfile(userId)
     }
     render(){
-        if(!this.props.isAuth) return <Redirect to={'/Login'} />
-        return (
-            <div>
-                <Content {...this.props} />
-            </div>
-        );
+        return <Content {...this.props} />
     }
 }
 const f1 = (state) => {
     return{
         profile : state.posts.profile,
-        isAuth : state.auth.isAuth
     }
 }
 
+//let AuthRedirectComponent = withAuthRedirect(ContentContainer)
+
 let withUrlDataContainerContent = withRouter(ContentContainer)
 
-export default connect(f1, {setUserProfileAC, getUsersProfile} )(withUrlDataContainerContent);
+export default withAuthRedirect(connect(f1, {setUserProfileAC, getUsersProfile} )(withUrlDataContainerContent));

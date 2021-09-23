@@ -2,6 +2,7 @@ import { subscribe, setUsers, setCurrentPage, setTotalCount, toggleFetching, tog
 import {connect} from 'react-redux'
 import Users from './Users'
 import React from 'react';
+import { withAuthRedirect } from '../HOC/withAuthRedirect';
 
 class UsersAPI extends React.Component{
     constructor(props){
@@ -31,11 +32,10 @@ const f1 = (state) => {
         currentPage : state.usersData.currentPage,
         fetching : state.usersData.isFetching,
         followingProgress : state.usersData.followingProgress,
-        isAuth : state.auth.isAuth
     }
 }
 
-let UsersContainer = connect(f1, {
+let UsersContainer = withAuthRedirect(connect(f1, {
     subscribe,
     setUsers,
     setCurrentPage,
@@ -45,5 +45,5 @@ let UsersContainer = connect(f1, {
     getUsers,
     followThunk,
     unFollowThunk,
-    })(UsersAPI);
+    })(UsersAPI));
 export default UsersContainer;

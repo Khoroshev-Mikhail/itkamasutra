@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, Redirect } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import css from './Users.module.css';
 
 let Users = (props) =>{
@@ -12,7 +12,6 @@ let Users = (props) =>{
         <div className={css.pages}>
             <p className={props.currentPage === el && css.selectedP} onClick={()=>{props.setCurrentPage(el)}}>{el}</p>
         </div>)
-    if(!props.isAuth) return <Redirect to={'/Login'} />
     return (
         <div>
             {pagesRender}
