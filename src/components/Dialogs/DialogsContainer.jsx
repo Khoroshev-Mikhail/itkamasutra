@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { addMessage, updateMessage } from '../../redux/dialogsreducer';
 import Dialogs from './Dialogs';
-import { Redirect } from 'react-router-dom';
 import { withAuthRedirect } from '../HOC/withAuthRedirect';
+import { compose } from 'redux';
 
 let f1 = (state) => {
     return {
@@ -11,9 +11,7 @@ let f1 = (state) => {
     }
 }
 
-
-let DialogsContainer = withAuthRedirect(connect(f1, 
-    {addMessage, updateMessage})
-    (Dialogs));
-
-export default DialogsContainer;
+export default compose(
+    connect(f1, {addMessage, updateMessage}),
+    withAuthRedirect
+)(Dialogs)

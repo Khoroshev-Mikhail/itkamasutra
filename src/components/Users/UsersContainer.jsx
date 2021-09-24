@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import Users from './Users'
 import React from 'react';
 import { withAuthRedirect } from '../HOC/withAuthRedirect';
+import { compose } from 'redux';
 
 class UsersAPI extends React.Component{
     constructor(props){
@@ -35,15 +36,17 @@ const f1 = (state) => {
     }
 }
 
-let UsersContainer = withAuthRedirect(connect(f1, {
-    subscribe,
-    setUsers,
-    setCurrentPage,
-    setTotalCount,
-    toggleFetching, 
-    toggleProgress,
-    getUsers,
-    followThunk,
-    unFollowThunk,
-    })(UsersAPI));
-export default UsersContainer;
+export default compose(
+    connect(f1, {
+        subscribe,
+        setUsers,
+        setCurrentPage,
+        setTotalCount,
+        toggleFetching, 
+        toggleProgress,
+        getUsers,
+        followThunk,
+        unFollowThunk,
+        }),
+        withAuthRedirect
+)(UsersAPI)

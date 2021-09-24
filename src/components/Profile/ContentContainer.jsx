@@ -4,6 +4,7 @@ import Content from './Content';
 import { setUserProfileAC, getUsersProfile } from '../../redux/postreducer';
 import { withRouter, Redirect } from 'react-router';
 import { withAuthRedirect } from '../HOC/withAuthRedirect';
+import { compose } from 'redux';
 
 class ContentContainer extends React.Component {
     constructor(props){
@@ -25,8 +26,9 @@ const f1 = (state) => {
     }
 }
 
-//let AuthRedirectComponent = withAuthRedirect(ContentContainer)
 
-let withUrlDataContainerContent = withRouter(ContentContainer)
-
-export default withAuthRedirect(connect(f1, {setUserProfileAC, getUsersProfile} )(withUrlDataContainerContent));
+export default compose(
+    withRouter,
+    connect(f1, {setUserProfileAC, getUsersProfile} ),
+    withAuthRedirect
+)(ContentContainer)
