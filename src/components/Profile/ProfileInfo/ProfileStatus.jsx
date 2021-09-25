@@ -2,17 +2,25 @@ import React from "react";
 
 class ProfileInfo extends React.Component{
     state = {
-        editMode : false
+        editMode : false,
+        status : this.props.status
     }
-
+    /*componentDidMount(){
+        this.setState({status : this.props.getStatus})
+    }*/
     activeEditMode = () => {
         this.setState({editMode : true})
     }
-    deActiveEditMode(){ //Если не объявлять метод стрелочной функцией придётся биндить при вызове
+    deActiveEditMode = () =>{ //Если не объявлять метод стрелочной функцией придётся биндить при вызове
         this.setState({editMode : false})
+        this.props.updateStatus(this.state.status)
     }
-
+    onStatusChanged = (e) => {
+        this.setState({status : e.currentTarget.value})
+    }
+   
     render(){
+        //this.props.setStatus('sdsd')
         return (
             <div>
                 {!this.state.editMode &&
@@ -22,7 +30,7 @@ class ProfileInfo extends React.Component{
                 }
                 {this.state.editMode &&
                     <div>
-                        <input autoFocus={true} onBlur={this.deActiveEditMode.bind(this)} value={this.props.status}/>
+                        <input onChange={this.onStatusChanged} autoFocus={true} onBlur={this.deActiveEditMode} value={this.state.status}/>
                     </div>
                 }
 
