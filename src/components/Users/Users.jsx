@@ -8,10 +8,12 @@ let Users = (props) =>{
     for(let i = 1; i <= pagesCount; i++){
         pages.push(i)
     }
+
     let pagesRender = pages.map(el => 
         <div className={css.pages}>
             <p className={props.currentPage === el && css.selectedP} onClick={()=>{props.setCurrentPage(el)}}>{el}</p>
         </div>)
+            console.log(props.currentPage)
     return (
         <div>
             {pagesRender}

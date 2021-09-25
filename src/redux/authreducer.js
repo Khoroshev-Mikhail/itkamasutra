@@ -1,5 +1,4 @@
 import {authAPI} from './../API/api'
-import axios from 'axios'
 
 let initialState = {
     userId : null,
@@ -25,8 +24,10 @@ export const setAuthUserData = (userId, email, login) => ({type : SET_AUTH_USER_
 export const authThunk = () => (dispatch) => {
     return authAPI.getAuth().then(response =>{
         if(response.data.resultCode == 0){
-            let {userId, login, email} = response.data.data
-            dispatch(setAuthUserData(userId, login, email))
+            let {id, login, email} = response.data.data
+            console.log(response.data.data)
+            console.log(id, login, email)
+            dispatch(setAuthUserData(id, login, email))
         }
     })
 }

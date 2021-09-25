@@ -28,12 +28,25 @@ export const usersAPI = {
             })
     },
     getUserProfile(id){
-        return instance.get(`profile/${id}`)
+        console.warn('Метод устарел, используйте метод и объекта profileAPI')
+        return profileAPI.getUserProfile(id)
     }
 }
 
 export const authAPI = {
     getAuth(){
         return instance.get('https://social-network.samuraijs.com/api/1.0/auth/me')
+    }
+}
+
+export const profileAPI = {
+    getUserProfile(id){
+        return instance.get(`profile/${id}`)
+    },
+    getStatus(id){
+        return instance.get('profile/status/' + id)
+    },
+    updateStatus(status){
+        return instance.put('profile/status', { status : status})
     }
 }
