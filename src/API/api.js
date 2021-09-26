@@ -35,7 +35,7 @@ export const usersAPI = {
 
 export const authAPI = {
     getAuth(){
-        return instance.get('https://social-network.samuraijs.com/api/1.0/auth/me')
+        return instance.get('auth/me')
     }
 }
 
@@ -44,7 +44,7 @@ export const profileAPI = {
         return instance.get(`profile/${id}`)
     },
     getStatus(id){
-        return instance.get('profile/status/' + id)
+        return instance.get(`profile/status/${id}`)
     },
     updateStatus(status){
         return instance.put(`profile/status`, {status : status })

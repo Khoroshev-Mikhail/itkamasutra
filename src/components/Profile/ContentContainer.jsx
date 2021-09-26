@@ -11,8 +11,8 @@ class ContentContainer extends React.Component {
         super(props)
     }
     componentDidMount(){
-        let userId = this.props.userId;
-        if(!userId) userId = 2;
+        let userId = this.props.match.params.userId;
+        if(!userId) userId = 19525;
         this.props.getUsersProfile(userId)
         this.props.getStatus(userId)
     }

@@ -5,9 +5,9 @@ class ProfileInfo extends React.Component{
         editMode : false,
         status : this.props.status
     }
-    /*componentDidMount(){
-        this.setState({status : this.props.getStatus})
-    }*/
+    componentDidMount(){
+
+    }
     activeEditMode = () => {
         this.setState({editMode : true})
     }
@@ -20,12 +20,11 @@ class ProfileInfo extends React.Component{
     }
    
     render(){
-        //this.props.setStatus('sdsd')
         return (
             <div>
                 {!this.state.editMode &&
                     <div>
-                        <span onClick={this.activeEditMode}>{this.props.status}</span>
+                        <span onClick={this.activeEditMode}>{this.props.status || '------'}</span>
                     </div>
                 }
                 {this.state.editMode &&

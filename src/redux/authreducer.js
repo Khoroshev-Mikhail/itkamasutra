@@ -25,8 +25,6 @@ export const authThunk = () => (dispatch) => {
     return authAPI.getAuth().then(response =>{
         if(response.data.resultCode == 0){
             let {id, login, email} = response.data.data
-            console.log(response.data.data)
-            console.log(id, login, email)
             dispatch(setAuthUserData(id, login, email))
         }
     })

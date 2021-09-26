@@ -39,7 +39,7 @@ const postreducer = (state = initialState, action) => {
 const ADD_POST = 'ADD-POST';
 const UPDATE_POST = 'UPDATE-POST';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
-const SET_STATUS = 'SET-STATUS';
+const SET_STATUS = 'SET_STATUS';
 export const addPost = () => ({type : ADD_POST})
 export const updatePost = (text) => ({type : UPDATE_POST, newPostText : text}) 
 export const setUserProfileAC = (profile) => ({type: SET_USER_PROFILE, profile : profile})
