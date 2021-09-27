@@ -17,6 +17,7 @@ class ContentContainer extends React.Component {
         this.props.getStatus(userId)
     }
     render(){
+        console.log('renderContentContainer')
         return <Content {...this.props} />
     }
 }

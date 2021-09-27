@@ -18,8 +18,16 @@ class ProfileInfo extends React.Component{
     onStatusChanged = (e) => {
         this.setState({status : e.currentTarget.value})
     }
-   
+    
+    componentDidUpdate(prevProps, prevState){
+        console.log('update')
+        if(this.props.status !== prevProps.status){
+            this.setState({status : this.props.status})
+        }
+    }
+
     render(){
+        console.log('render')
         return (
             <div>
                 {!this.state.editMode &&

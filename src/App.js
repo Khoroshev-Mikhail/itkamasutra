@@ -9,6 +9,8 @@ import ContentContainer from './components/Profile/ContentContainer';
 import Login from './components/Login/Login.jsx';
 
 function App(props) {
+
+  console.log('renderApp')
   return (
       <div className="app-wrapper">
         <HeaderContainer />
