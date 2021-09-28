@@ -8,7 +8,6 @@ import App from './App';
 import {BrowserRouter} from 'react-router-dom';
 import {Provider} from 'react-redux'
 
-
 let reRenderEntireTree = (state) => {
     ReactDOM.render(
       /*<React.StrictMode>*/
