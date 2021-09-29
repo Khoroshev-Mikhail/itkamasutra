@@ -40,7 +40,9 @@ function App(props) {
               />} />
             <Route path="/Login"
               render ={()=>
-                <Login
+                <Login 
+                  dispatch={props.dispatch}
+                  state={props.state}
               />} />
         </div>
       </div>

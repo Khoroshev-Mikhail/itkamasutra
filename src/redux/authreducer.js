@@ -30,4 +30,12 @@ export const authThunk = () => (dispatch) => {
     })
 }
 
+export const getLogInThunk = () => (dispatch) => {
+    return authAPI.getLogIn().then(response => {
+        if(response.data.resultCode == 0){
+            authThunk();
+        }
+    })
+}
+
 export default authreducer;

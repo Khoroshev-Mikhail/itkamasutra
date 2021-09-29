@@ -1,10 +1,20 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { useLocation } from 'react-router'
 import { Field, reduxForm } from 'redux-form'
+import { getLogInThunk } from '../../redux/authreducer'
+
+const mapStateToProps = (state) => {
+    return {
+        isAuth : state.auth.isAuth
+    }
+}
 
 const Login = (props) => {
     const onSubmit = (formData) => {
-        console.log(formData)
+        props.getLogInThunk();
     }
+    console.log(useLocation().pathname)
     return (
         <>
             <h1>Login</h1>
@@ -12,6 +22,7 @@ const Login = (props) => {
         </>
     )
 }
+export default connect(mapStateToProps, {getLogInThunk})(Login)
 
 const LoginForm = (props) => {
     return (
@@ -33,5 +44,3 @@ const LoginForm = (props) => {
 }
 
 const ReduxLoginForm = reduxForm({ form : 'login'})(LoginForm)
-
-export default Login
