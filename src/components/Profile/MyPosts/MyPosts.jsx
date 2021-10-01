@@ -4,9 +4,6 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form'
 
 const MyPosts = (props) => {
-
-    let textarea = React.createRef();
-
     let addPost = (formData) => {
         props.addPost(formData.newPostText);
     }
@@ -30,8 +27,8 @@ const PostForm = (props) => {
     return(
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field placeholder={'newPostText'} name={'newPostText'} component={'input'}/>
-                <button>Add Post</button>
+                <Field placeholder={'New your post...'} name={'newPostText'} component={'textarea'}/>
+                <p><button>Add Post</button></p>
             </div>
         </form>
     )

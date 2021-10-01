@@ -31,12 +31,11 @@ const postreducer = (state = initialState, action) => {
 }
 
 const ADD_POST = 'ADD-POST';
-const UPDATE_POST = 'UPDATE-POST';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 const SET_STATUS = 'SET_STATUS';
-export const addPost = (newPostText) => ({type : ADD_POST, newPostText : newPostText})
-export const setUserProfileAC = (profile) => ({type: SET_USER_PROFILE, profile : profile})
-export const setStatus = (status) => ({type: SET_STATUS, status : status})
+export const addPost = (newPostText) => ({type : ADD_POST, newPostText})
+export const setUserProfileAC = (profile) => ({type: SET_USER_PROFILE, profile})
+export const setStatus = (status) => ({type: SET_STATUS, status})
 
 export const getUsersProfile = (userId) => (dispatch) => {
     usersAPI.getUserProfile(userId).then(response => {

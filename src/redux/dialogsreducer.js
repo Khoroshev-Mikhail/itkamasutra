@@ -11,22 +11,17 @@ let initialState = {
         {id: 3, message: 'Третье сообщение'},
         {id: 4, message: 'Четвёртое сообщение'},
         ],
-    newMessageText : 'New message',
 }
 
 
 const dialogsreducer = (state = initialState, action) => {
     let stateCopy;
     switch (action.type){
-        case 'UPDATE-MESSAGE' :
-            stateCopy = {...state};
-            stateCopy.newMessageText = action.newMessageText;
-            return stateCopy;
         case 'ADD-MESSAGE' :
             let id = state.messagesData.length + 1;
             stateCopy = {...state, 
                 messagesData : [...state.messagesData, 
-                    {id: id, message: state.newMessageText}
+                    {id: id, message: action.newMessageText}
                 ]
             }
             stateCopy.newMessageText = '';
@@ -37,8 +32,6 @@ const dialogsreducer = (state = initialState, action) => {
 }
 
 const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_MESSAGE = 'UPDATE-MESSAGE';
-export const addMessage = () => ({type : ADD_MESSAGE})
-export const updateMessage = (text) => ({type : UPDATE_MESSAGE, newMessageText : text}) 
+export const addMessage = (newMessageText) => ({type : ADD_MESSAGE, newMessageText})
 
 export default dialogsreducer;

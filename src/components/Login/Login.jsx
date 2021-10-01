@@ -14,7 +14,6 @@ const Login = (props) => {
     const onSubmit = (formData) => {
         props.getLogInThunk();
     }
-    console.log(useLocation().pathname)
     return (
         <>
             <h1>Login</h1>
