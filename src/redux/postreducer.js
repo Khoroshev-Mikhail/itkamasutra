@@ -6,7 +6,6 @@ let initialState = {
         {id: 2, message: 'I am fine!', likes: 122},
         {id: 3, message: 'we are fine too', likes: 222},
         ],
-        newPostText : 'it-kamasutra.com',
         profile : null,
         status : '',
 }
@@ -14,18 +13,13 @@ let initialState = {
 const postreducer = (state = initialState, action) => {
     let stateCopy;
     switch (action.type) {
-        case 'UPDATE-POST' : 
-            stateCopy = {...state, 
-                newPostText : action.newPostText}
-            return stateCopy;
         case 'ADD-POST' :
             let id = state.postData.length + 1;
             stateCopy = {...state,
                 postData : [...state.postData, 
-                    {id: id, message: state.newPostText, likes: 0}
+                    {id: id, message: action.newPostText, likes: 0}
                 ]
             };
-            stateCopy.newPostText = '';
             return stateCopy;
         case 'SET-USER-PROFILE' :
             return {...state, profile : action.profile}
@@ -40,8 +34,7 @@ const ADD_POST = 'ADD-POST';
 const UPDATE_POST = 'UPDATE-POST';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 const SET_STATUS = 'SET_STATUS';
-export const addPost = () => ({type : ADD_POST})
-export const updatePost = (text) => ({type : UPDATE_POST, newPostText : text}) 
+export const addPost = (newPostText) => ({type : ADD_POST, newPostText : newPostText})
 export const setUserProfileAC = (profile) => ({type: SET_USER_PROFILE, profile : profile})
 export const setStatus = (status) => ({type: SET_STATUS, status : status})
 

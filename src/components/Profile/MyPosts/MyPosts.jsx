@@ -1,25 +1,20 @@
 import css from './MyPosts.module.css';
 import Post from './Post/Post.jsx';
 import React from 'react';
+import { Field, reduxForm } from 'redux-form'
 
 const MyPosts = (props) => {
 
     let textarea = React.createRef();
 
-    let addPost = () => {
-        props.addPost();
-    }
-    
-    let onPostChange = () => {
-        let text = textarea.current.value;
-        props.updatePost(text);
+    let addPost = (formData) => {
+        props.addPost(formData.newPostText);
     }
     let postData = props.postData.map(el => <Post message={el.message} likeCount={el.likes} id={el.id} />);
     return(
         <div className={css.my_posts}>
             <div>
-            <textarea ref={textarea} value={props.newPostText} onChange={onPostChange}>Write new post</textarea><br />
-            <button onClick={ addPost }>Add Post</button>
+                <ReduxPostForm onSubmit={addPost} />
             </div>
             <div className={css.posts}>
                 <p>my posts</p>
@@ -30,3 +25,16 @@ const MyPosts = (props) => {
 }
 
 export default MyPosts;
+
+const PostForm = (props) => {
+    return(
+        <form onSubmit={props.handleSubmit}>
+            <div>
+                <Field placeholder={'newPostText'} name={'newPostText'} component={'input'}/>
+                <button>Add Post</button>
+            </div>
+        </form>
+    )
+}
+
+const ReduxPostForm = reduxForm({form : 'newPost'})(PostForm)

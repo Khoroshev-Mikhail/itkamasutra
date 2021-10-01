@@ -1,4 +1,4 @@
-import { addPost, updatePost } from '../../../redux/postreducer';
+import { addPost } from '../../../redux/postreducer';
 import MyPosts from './MyPosts';
 import {connect} from 'react-redux'
 
@@ -11,6 +11,6 @@ const f1 = (state) => {
 
 
 let MyPostsContainer = connect(f1, 
-    {addPost, updatePost}
+    {addPost}
     )(MyPosts)
 export default MyPostsContainer;
