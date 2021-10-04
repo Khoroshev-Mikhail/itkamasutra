@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { useLocation } from 'react-router'
 import { Field, reduxForm } from 'redux-form'
 import { getLogInThunk } from '../../redux/authreducer'
+import { InPut } from '../Common/FormsControls/FormControls'
+import { maxLengthCreator, required } from '../Utils/Validators/validators'
 
 const mapStateToProps = (state) => {
     return {
@@ -23,14 +25,16 @@ const Login = (props) => {
 }
 export default connect(mapStateToProps, {getLogInThunk})(Login)
 
+const maxLength10 = maxLengthCreator(10)
+
 const LoginForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field placeholder={'login'} name={'login'} component={'input'}/>
+                <Field validate={[maxLength10, required]} placeholder={'login'} name={'login'} component={InPut}/>
             </div>
             <div>
-                <Field placeholder={'pwd'} name={'pwd'} component={'input'} />
+                <Field validate={[maxLength10, required]} placeholder={'pwd'} name={'pwd'} component={InPut} />
             </div>
             <div>
                 <Field type={'checkbox'} name={'rememberMe'} component={'input'} /> remember Me
