@@ -3,7 +3,7 @@ import Post from './Post/Post.jsx';
 import React from 'react';
 import { Field, reduxForm } from 'redux-form'
 import {maxLengthCreator, required} from './../../Utils/Validators/validators'
-import { TextArea } from '../../Common/FormsControls/FormControls';
+import { Element } from '../../Common/FormsControls/FormControls';
 
 const MyPosts = (props) => {
     let addPost = (formData) => {
@@ -26,6 +26,7 @@ const MyPosts = (props) => {
 export default MyPosts;
 
 const maxLength10 = maxLengthCreator(10)
+const TextArea = Element('textarea')
 const PostForm = (props) => {
     return(
         <form onSubmit={props.handleSubmit}>

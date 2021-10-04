@@ -7,7 +7,7 @@ const Header = (props) => {
         <header className={css.header}>
             <img src={logo} className="App-logo" alt="logo" />
             <div className={css.left}>
-                {props.isAuth ? 'ara' : <NavLink to="#">Login</NavLink>}
+                {props.isAuth ? <button onClick={props.exitThunk}>Exit: {props.login}</button> : <NavLink to="#">Login</NavLink>}
             </div>
         </header>
     );

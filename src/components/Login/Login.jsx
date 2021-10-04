@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { useLocation } from 'react-router'
+//import { useLocation } from 'react-router'
 import { Field, reduxForm } from 'redux-form'
 import { getLogInThunk } from '../../redux/authreducer'
-import { InPut } from '../Common/FormsControls/FormControls'
+import { Element } from '../Common/FormsControls/FormControls'
 import { maxLengthCreator, required } from '../Utils/Validators/validators'
 
 const mapStateToProps = (state) => {
@@ -14,7 +14,7 @@ const mapStateToProps = (state) => {
 
 const Login = (props) => {
     const onSubmit = (formData) => {
-        props.getLogInThunk();
+        props.getLogInThunk(formData.login, formData.pwd, formData.rememberMe);
     }
     return (
         <>
@@ -25,16 +25,16 @@ const Login = (props) => {
 }
 export default connect(mapStateToProps, {getLogInThunk})(Login)
 
-const maxLength10 = maxLengthCreator(10)
-
+const maxLength20 = maxLengthCreator(20)
+const InPut = Element('input')
 const LoginForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field validate={[maxLength10, required]} placeholder={'login'} name={'login'} component={InPut}/>
+                <Field validate={[maxLength20, required]} placeholder={'login'} name={'login'} component={InPut}/>
             </div>
             <div>
-                <Field validate={[maxLength10, required]} placeholder={'pwd'} name={'pwd'} component={InPut} />
+                <Field validate={[maxLength20, required]} placeholder={'pwd'} name={'pwd'} component={InPut} />
             </div>
             <div>
                 <Field type={'checkbox'} name={'rememberMe'} component={'input'} /> remember Me

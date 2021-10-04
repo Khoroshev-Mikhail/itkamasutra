@@ -3,7 +3,7 @@ import DialogsItem from './DialogItem/DialogItem.jsx';
 import Messages from './Messages/Messages.jsx';
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
-import { TextArea } from '../Common/FormsControls/FormControls';
+import { Element } from '../Common/FormsControls/FormControls';
 import { required, maxLengthCreator } from '../Utils/Validators/validators';
 
 const Dialogs = (props) => {
@@ -28,6 +28,7 @@ const Dialogs = (props) => {
 }
 
 const maxLength30 = maxLengthCreator(30)
+const TextArea = Element('textarea')
 const MessagesForm = (props) => {
     return (
         <div><form onSubmit={props.handleSubmit}>
