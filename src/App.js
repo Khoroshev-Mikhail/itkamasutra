@@ -7,47 +7,59 @@ import UsersContainer from './components/Users/UsersContainer';
 import MyAppContainer from './components/MyApp/MyAppContainer'
 import ContentContainer from './components/Profile/ContentContainer';
 import Login from './components/Login/Login.jsx';
+import React from 'react';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { withRouter } from 'react-router';
+import { authThunk } from './redux/authreducer';
 
-function App(props) {
-  return (
+class App extends React.Component{
+  constructor(props){
+    super(props)
+  }
+  render(){
+    return (
       <div className="app-wrapper">
         <HeaderContainer />
-        <Nav state = {props.state}/>
+        <Nav state = {this.props.state}/>
         <div className="content">
           <Route path="/profile/:userId?" 
             render={() => 
               <ContentContainer 
-                dispatch={props.dispatch}
-                state={props.state}
+                dispatch={this.props.dispatch}
+                state={this.props.state}
             />} />
           <Route path="/Dialogs" 
               render={() => 
                 <DialogsContainer 
-                  dispatch={props.dispatch}
-                  state={props.state}
+                  dispatch={this.props.dispatch}
+                  state={this.props.state}
               />} />
           <Route path="/Users"
             render ={()=>
               <UsersContainer
-                dispatch={props.dispatch}
-                state={props.state}
+                dispatch={this.props.dispatch}
+                state={this.props.state}
             />} />
             <Route path="/MyApp"
               render ={()=>
                 <MyAppContainer
-                  dispatch={props.dispatch}
-                  state={props.state}
+                  dispatch={this.props.dispatch}
+                  state={this.props.state}
               />} />
             <Route path="/Login"
               render ={()=>
                 <Login 
-                  dispatch={props.dispatch}
-                  state={props.state}
+                  dispatch={this.props.dispatch}
+                  state={this.props.state}
               />} />
         </div>
       </div>
-
   );
+  }
 }
 
-export default App;
+export default compose( 
+    connect(null,{authThunk}), 
+    withRouter
+  )(App);

@@ -1,10 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router'
 //import { useLocation } from 'react-router'
 import { Field, reduxForm } from 'redux-form'
 import { getLogInThunk } from '../../redux/authreducer'
 import { Element } from '../Common/FormsControls/FormControls'
 import { maxLengthCreator, required } from '../Utils/Validators/validators'
+import css from './Login.module.css'
 
 const mapStateToProps = (state) => {
     return {
@@ -16,6 +18,7 @@ const Login = (props) => {
     const onSubmit = (formData) => {
         props.getLogInThunk(formData.login, formData.pwd, formData.rememberMe);
     }
+    if(props.isAuth) return <Redirect to="/profile" />
     return (
         <>
             <h1>Login</h1>
@@ -38,6 +41,9 @@ const LoginForm = (props) => {
             </div>
             <div>
                 <Field type={'checkbox'} name={'rememberMe'} component={'input'} /> remember Me
+            </div>
+            <div className={css.error}>
+                {props.error}
             </div>
             <div>
                 <button>Login</button>

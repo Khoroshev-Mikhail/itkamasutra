@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Content from './Content';
 import { setUserProfileAC, getUsersProfile, getStatus, updateStatus } from '../../redux/postreducer';
-import { withRouter } from 'react-router';
+import { Redirect, withRouter } from 'react-router';
 import { withAuthRedirect } from '../HOC/withAuthRedirect';
 import { compose } from 'redux';
 
@@ -12,12 +12,13 @@ class ContentContainer extends React.Component {
     }
     componentDidMount(){
         let userId = this.props.match.params.userId;
-        if(!userId) userId = 19525;
+        if(!userId) {
+            userId = this.props.userId;
+        } 
         this.props.getUsersProfile(userId)
         this.props.getStatus(userId)
     }
     render(){
-        console.log('renderContentContainer')
         return <Content {...this.props} />
     }
 }
@@ -25,7 +26,8 @@ const f1 = (state) => {
     return{
         profile : state.posts.profile,
         status : state.posts.status,
-        userId : state.auth.userId
+        userId : state.auth.userId,
+        isAuth : state.auth.isAuth
     }
 }
 
