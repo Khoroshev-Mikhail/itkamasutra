@@ -7,9 +7,6 @@ class HeaderContainer extends React.Component {
     constructor(props){
         super(props)
     }
-    componentDidMount(){
-        this.props.authThunk();
-    }
     render(){
         return (
             <Header {...this.props} />

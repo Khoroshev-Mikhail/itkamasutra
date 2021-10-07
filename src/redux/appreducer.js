@@ -1,5 +1,3 @@
-import { stopSubmit } from 'redux-form'
-import {authAPI} from '../API/api'
 import { authThunk } from './authreducer'
 
 let initialState = {
@@ -21,8 +19,10 @@ export const setInitialized = () => ({type : SET_INITIALIZED})
 
 //Thunks
 export const initializeApp = () => (dispatch) => {
-    let promise = authThunk();
-    Promise.all([promise]).then(()=>{dispatch(setInitialized)})
+    let promise = dispatch(authThunk())
+    Promise.all([promise]).then(()=>{
+        dispatch(setInitialized())
+    })
 }
 
 export default appreducer;

@@ -1,4 +1,4 @@
-import css from './Content.module.css';
+//import css from './Content.module.css';
 import MyPosts from './MyPosts/MyPostsContainer.jsx';
 import ProfileInfo from './ProfileInfo/ProfileInfo.jsx';
 

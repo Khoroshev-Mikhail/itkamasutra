@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Content from './Content';
 import { setUserProfileAC, getUsersProfile, getStatus, updateStatus } from '../../redux/postreducer';
-import { Redirect, withRouter } from 'react-router';
+import { withRouter } from 'react-router';
 import { withAuthRedirect } from '../HOC/withAuthRedirect';
 import { compose } from 'redux';
 
@@ -12,8 +12,11 @@ class ContentContainer extends React.Component {
     }
     componentDidMount(){
         let userId = this.props.match.params.userId;
-        if(!userId) {
+        if(!userId || !this.props.match.params.userId) {
             userId = this.props.userId;
+            if(!userId){
+                this.props.history.push('/login')
+            }
         } 
         this.props.getUsersProfile(userId)
         this.props.getStatus(userId)

@@ -12,12 +12,22 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withRouter } from 'react-router';
 import { authThunk } from './redux/authreducer';
+import { initializeApp } from './redux/appreducer';
+import Preloader from './components/Preloader/Preloader';
+
 
 class App extends React.Component{
   constructor(props){
     super(props)
   }
+  componentDidMount(){
+    this.props.initializeApp();
+  }
   render(){
+    if(!this.props.isInitialized) {
+      console.log(this.props.isInitialized)
+      return <Preloader />
+    }
     return (
       <div className="app-wrapper">
         <HeaderContainer />
@@ -59,7 +69,13 @@ class App extends React.Component{
   }
 }
 
+const mstp = (state) => {
+  return {
+    isInitialized : state.app.initialized
+  }
+}
+
 export default compose( 
-    connect(null,{authThunk}), 
+    connect(mstp, {authThunk, initializeApp}), 
     withRouter
   )(App);

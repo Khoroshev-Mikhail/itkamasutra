@@ -4,6 +4,7 @@ import Users from './Users'
 import React from 'react';
 import { withAuthRedirect } from '../HOC/withAuthRedirect';
 import { compose } from 'redux';
+import Preloader from '../Preloader/Preloader';
 
 class UsersAPI extends React.Component{
     constructor(props){
@@ -19,7 +20,7 @@ class UsersAPI extends React.Component{
     render () {
         return(
             <>
-            {this.props.fetching ? <img src="https://img.gazeta.ru/files3/412/13414412/Depositphotos_435546832_l-2015-pic905-895x505-59593.jpg" style={{width : '200px'}}/> : 'ss'}
+            {this.props.fetching ? <Preloader /> : 'ss'}
             <Users {...this.props} setCurrentPage={this.setCurrentPage}/>
             </>
         )
