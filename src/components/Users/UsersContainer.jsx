@@ -5,6 +5,7 @@ import React from 'react';
 import { withAuthRedirect } from '../HOC/withAuthRedirect';
 import { compose } from 'redux';
 import Preloader from '../Preloader/Preloader';
+import { getUsersSuperSelector } from '../../redux/usersselectors';
 
 class UsersAPI extends React.Component{
     constructor(props){
@@ -29,7 +30,7 @@ class UsersAPI extends React.Component{
 
 const f1 = (state) => {
     return {
-        users : state.usersData.users,
+        users : getUsersSuperSelector(state),
         pageSize : state.usersData.pageSize,
         totalUsersCount : state.usersData.totalUsersCount,
         currentPage : state.usersData.currentPage,
